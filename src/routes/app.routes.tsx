@@ -1,15 +1,19 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { CardStyleInterpolators, createStackNavigator } from "@react-navigation/stack";
 
+import { DietDetails } from "@screens/DietDetails";
 import { Home } from "@screens/Home";
-import { Route } from "@screens/Route";
 
 export function AppRoutes() {
-  const { Navigator, Screen } = createNativeStackNavigator();
+  const { Navigator, Screen } = createStackNavigator();
 
   return (
     <Navigator screenOptions={{ headerShown: false }}>
       <Screen name="Home" component={Home} />
-      <Screen name="Route" component={Route} />
+      <Screen
+        name="DietDetails"
+        component={DietDetails}
+        options={{ cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS }}
+      />
     </Navigator>
   );
 }
