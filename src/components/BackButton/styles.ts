@@ -6,6 +6,8 @@ export type ButtonIconTypeStyleProps = "PRIMARY" | "SECONDARY" | "DEFAULT";
 
 type Props = {
   type: ButtonIconTypeStyleProps;
+  positionLeft: number;
+  positionTop: number;
 };
 
 // prettier-ignore
@@ -14,6 +16,9 @@ export const Container = styled(TouchableOpacity)<Props>`
   align-items: center; 
   width: 24px;
   height: 24px;
+  position: absolute;
+  left: ${({positionLeft}) => positionLeft}px;
+  top: ${({positionTop}) => positionTop}px;
 `;
 
 export const Icon = styled(MaterialIcons).attrs<Props>(({ theme, type }) => {

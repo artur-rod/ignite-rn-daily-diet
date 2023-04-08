@@ -4,7 +4,7 @@ import styled, { css } from "styled-components/native";
 export const Header = styled(View)`
   height: 130px;
   width: 100%;
-  padding: 0 24px 24px 24px;
+  padding: 24px;
   justify-content: center;
 `;
 

@@ -2,6 +2,7 @@ import { CardStyleInterpolators, createStackNavigator } from "@react-navigation/
 
 import { DietDetails } from "@screens/DietDetails";
 import { Home } from "@screens/Home";
+import { NewMeal } from "@screens/NewMeal";
 
 export function AppRoutes() {
   const { Navigator, Screen } = createStackNavigator();
@@ -12,6 +13,11 @@ export function AppRoutes() {
       <Screen
         name="DietDetails"
         component={DietDetails}
+        options={{ cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS }}
+      />
+      <Screen
+        name="NewMeal"
+        component={NewMeal}
         options={{ cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS }}
       />
     </Navigator>

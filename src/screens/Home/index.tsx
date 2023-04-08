@@ -47,7 +47,7 @@ export function Home() {
       />
 
       <Text>Refeições</Text>
-      <Button title="Nova refeição" icon="add" />
+      <Button title="Nova refeição" icon="add" onPress={() => navigate("NewMeal")} />
 
       <SectionList
         sections={mealsByDate}

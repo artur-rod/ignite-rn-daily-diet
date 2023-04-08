@@ -44,6 +44,8 @@ export function DietDetails() {
     >
       <Header>
         <BackButton
+          positionLeft={24}
+          positionTop={15}
           type={percentage < 60 ? "SECONDARY" : "PRIMARY"}
           onPress={() => navigate("Home")}
         />
