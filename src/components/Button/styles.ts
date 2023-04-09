@@ -14,7 +14,8 @@ export const Container = styled(TouchableOpacity)<Props>`
   justify-content: center;
   align-items: center; 
   width: 100%;
-  height: 50px;
+  max-height: 50px;
+  min-height: 50px;
   border-radius: 6px;
   border: 1px solid ${({ theme, type }) => type === "PRIMARY" ? "transparent" : theme.COLORS.GRAY_200};
   background-color: ${({ theme, type }) => type === "PRIMARY" ? theme.COLORS.GRAY_200 : theme.COLORS.GRAY_700};

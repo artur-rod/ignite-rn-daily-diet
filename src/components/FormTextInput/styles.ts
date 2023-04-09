@@ -11,6 +11,7 @@ export const Title = styled.Text`
     font-family: ${theme.FONT_FAMILY.BOLD};
     color: ${theme.COLORS.GRAY_200};
   `};
+  margin-bottom: 2px;
 `;
 
 // prettier-ignore

@@ -20,7 +20,7 @@ export function Home() {
   const { navigate } = useNavigation();
 
   async function fetchMeals() {
-    const storage = await getAllMeals();
+    const storage = (await getAllMeals()) as MealsDTO[];
     setMeals([...storage]);
 
     const dietPercentage = getDietPercentage(storage);
@@ -30,9 +30,12 @@ export function Home() {
     setMealsByDate([...organizeMealsByDate]);
   }
 
-  useEffect(() => {
-    fetchMeals();
-  }, []);
+  useEffect(
+    () => {
+      fetchMeals();
+    },
+    [meals]
+  );
 
   return (
     <SafeAreaView style={{ padding: 24 }}>
