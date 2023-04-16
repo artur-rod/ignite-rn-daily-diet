@@ -15,7 +15,7 @@ export function NewMeal() {
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
   const [hour, setHour] = useState("");
-  const [onDiet, setOnDiet] = useState<boolean>(false);
+  const [onDiet, setOnDiet] = useState(false);
 
   const nameRef = useRef<TextInput>(null);
   const descriptionRef = useRef<TextInput>(null);
@@ -39,6 +39,7 @@ export function NewMeal() {
   }
 
   function handleOnDietButton() {
+    console.log("Clique foi")
     setOnDiet(!onDiet);
   }
 
@@ -85,7 +86,7 @@ export function NewMeal() {
             onChangeHour={handleHourInput}
             hourRef={hourRef}
             onDietValue={onDiet}
-            handleOnDietButton={handleOnDietButton}
+            handleOnDietButton={() => handleOnDietButton()}
           />
 
           <ButtonContainer>

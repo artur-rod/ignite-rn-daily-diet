@@ -20,6 +20,7 @@ type Props = {
   hourRef: RefObject<TextInput>;
   onDietValue: boolean;
   handleOnDietButton: () => void;
+
 }
 
 export function MealInfoContainer({
@@ -88,12 +89,17 @@ export function MealInfoContainer({
 
       <Text>Está dentro da dieta?</Text>
       <TwoColumnFormContainer>
-        <BooleanButton title="Sim" active={onDietValue} type="PRIMARY" onPress={handleOnDietButton} />
+        <BooleanButton
+          title="Sim"
+          active={onDietValue}
+          type="PRIMARY"
+          onPress={() => handleOnDietButton()}
+        />
         <BooleanButton
           title="Não"
           active={!onDietValue}
           type="SECONDARY"
-          onPress={handleOnDietButton}
+          onPress={() => handleOnDietButton()}
         />
       </TwoColumnFormContainer>
     </FormContainer>
