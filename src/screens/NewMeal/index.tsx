@@ -1,22 +1,26 @@
-import { BooleanButton } from "@components/BooleanButton";
 import { Button } from "@components/Button";
-import { FormTextInput } from "@components/FormTextInput";
 import { Header } from "@components/Header";
+import { MealInfoContainer } from "@components/MealInfoContainer";
 import { useNavigation } from "@react-navigation/native";
 import { MealsDTO } from "@storage/MealsDTO";
 import { createNewMeal } from "@storage/createNewMeal";
 import { AppError } from "@utils/AppError";
 import { randomUUID } from "expo-crypto";
-import { useState } from "react";
-import { Alert } from "react-native";
-import { ButtonContainer, Container, FormContainer, Text, TwoColumnFormContainer } from "./styles";
+import { useRef, useState } from "react";
+import { Alert, Keyboard, TextInput, TouchableWithoutFeedback } from "react-native";
+import { ButtonContainer, Container, FormContainer } from "./styles";
 
 export function NewMeal() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
   const [hour, setHour] = useState("");
-  const [inDiet, setInDiet] = useState<boolean>(false);
+  const [onDiet, setOnDiet] = useState<boolean>(false);
+
+  const nameRef = useRef<TextInput>(null);
+  const descriptionRef = useRef<TextInput>(null);
+  const dateRef = useRef<TextInput>(null);
+  const hourRef = useRef<TextInput>(null);
 
   const { navigate } = useNavigation();
 
@@ -27,12 +31,15 @@ export function NewMeal() {
   }
 
   function handleHourInput(input: string) {
-    if (input.length === 2 && input.length > hour.length) return setHour(`${input}:`);
+    if (input.length >= 2 && input.length > hour.length) {
+      const cleanInput = input.replaceAll(":", "")
+      return setHour(`${cleanInput.substring(0, 2)}:${cleanInput.substring(2)}`);
+    }
     setHour(input);
   }
 
-  function handleInDietButton() {
-    setInDiet(!inDiet);
+  function handleOnDietButton() {
+    setOnDiet(!onDiet);
   }
 
   async function handleAddNewMeal() {
@@ -43,11 +50,11 @@ export function NewMeal() {
         time: hour,
         name,
         description,
-        onDiet: inDiet
+        onDiet
       };
 
       await createNewMeal(newMeal);
-      navigate("Home");
+      navigate("NewMealConfirmation", { type: onDiet ? "PRIMARY" : "SECONDARY" });
     } catch (err) {
       if (err instanceof AppError) {
         Alert.alert("Nova refeição", err.message);
@@ -59,54 +66,33 @@ export function NewMeal() {
   }
 
   return (
-    <Container>
-      <Header title="Nova Refeição" goBack={() => navigate("Home")} />
-      <FormContainer>
-        <FormTextInput title="Nome" value={name} onChangeText={setName} />
-        <FormTextInput
-          title="Descrição"
-          value={description}
-          onChangeText={setDescription}
-          multiline={true}
-          height={100}
-        />
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <Container>
+        <Header title="Nova Refeição" goBack={() => navigate("Home")} />
 
-        <TwoColumnFormContainer>
-          <FormTextInput
-            title="Data"
-            keyboardType="number-pad"
-            width={50}
-            value={date}
-            onChangeText={e => handleDateInput(e)}
-            maxLength={10}
-            placeholder="10/03/2023"
+        <FormContainer>
+          <MealInfoContainer
+            name={name}
+            onChangeName={setName}
+            nameRef={nameRef}
+            description={description}
+            onChangeDescription={setDescription}
+            descriptionRef={descriptionRef}
+            date={date}
+            onChangeDate={handleDateInput}
+            dateRef={dateRef}
+            hour={hour}
+            onChangeHour={handleHourInput}
+            hourRef={hourRef}
+            onDietValue={onDiet}
+            handleOnDietButton={handleOnDietButton}
           />
-          <FormTextInput
-            title="Hora"
-            keyboardType="number-pad"
-            width={50}
-            value={hour}
-            onChangeText={e => handleHourInput(e)}
-            maxLength={5}
-            placeholder="10:10"
-          />
-        </TwoColumnFormContainer>
 
-        <Text>Está dentro da dieta?</Text>
-        <TwoColumnFormContainer>
-          <BooleanButton title="Sim" active={inDiet} type="PRIMARY" onPress={handleInDietButton} />
-          <BooleanButton
-            title="Não"
-            active={!inDiet}
-            type="SECONDARY"
-            onPress={handleInDietButton}
-          />
-        </TwoColumnFormContainer>
-
-        <ButtonContainer>
-          <Button title="Cadastrar refeição" onPress={handleAddNewMeal} />
-        </ButtonContainer>
-      </FormContainer>
-    </Container>
+          <ButtonContainer>
+            <Button title="Cadastrar refeição" onPress={handleAddNewMeal} />
+          </ButtonContainer>
+        </FormContainer>
+      </Container>
+    </TouchableWithoutFeedback >
   );
 }

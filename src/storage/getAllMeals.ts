@@ -9,12 +9,12 @@ export async function getAllMeals() {
 
     allMeals.sort((a, b) => {
       const [aDay, aMonth, aYear] = a.date.split("/");
-      const [aHour, aMinute] = a.time.split(":");
+      const aCompleteDate = new Date(`${aYear}-${aMonth}-${aDay}T${a.time}:00.000Z`);
 
       const [bDay, bMonth, bYear] = b.date.split("/");
-      const [bHour, bMinute] = a.time.split(":");
+      const bCompleteDate = new Date(`${bYear}-${bMonth}-${bDay}T${b.time}:00.000Z`);
 
-      if (aYear > bYear && aMonth > bMonth && aDay > bDay && aHour > bHour && aMinute > bMinute) {
+      if (aCompleteDate < bCompleteDate) {
         return 1;
       } else {
         return -1;

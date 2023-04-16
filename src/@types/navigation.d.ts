@@ -1,3 +1,4 @@
+import { TitleStyleProps } from "@screens/NewMealConfirmation/styles";
 import { MealsDTO } from "@storage/MealsDTO";
 
 export declare global {
@@ -8,6 +9,9 @@ export declare global {
       DietDetails: {
         meals: MealsDTO[];
         percentage: number;
+      };
+      NewMealConfirmation: {
+        type: TitleStyleProps;
       };
     }
   }

@@ -1,4 +1,4 @@
-import logo from "@assets/logo.png";
+import logo from "@assets/logo/logo.png";
 import { Button } from "@components/Button";
 import { MealCardButton } from "@components/MealCardButton";
 import { MealsAverageButton } from "@components/MealsAverageButton";
@@ -60,8 +60,8 @@ export function Home() {
           <ListSectionTitle>
             {date}
           </ListSectionTitle>}
-        contentContainerStyle={[{ paddingBottom: 100 }, !mealsByDate.length && { flex: 1 }]}
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 100 }}
       />
     </SafeAreaView>
   );
