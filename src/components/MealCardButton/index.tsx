@@ -1,13 +1,14 @@
 import { MealsDTO } from "@storage/MealsDTO";
 import theme from "@theme/index";
+import { TouchableOpacityProps } from "react-native";
 import { Container, Divider, Name, OnDietSign, Time } from "./styles";
 
-type Props = {
+type Props = TouchableOpacityProps & {
   mealDetails: MealsDTO;
 };
-export function MealCardButton({ mealDetails }: Props) {
+export function MealCardButton({ mealDetails, ...rest }: Props) {
   return (
-    <Container>
+    <Container {...rest}>
       <Time>
         {mealDetails.time}
       </Time>

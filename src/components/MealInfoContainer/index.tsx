@@ -1,9 +1,8 @@
 import { BooleanButton } from "@components/BooleanButton"
 import { FormTextInput } from "@components/FormTextInput"
-import { FormContainer, TwoColumnFormContainer } from "@screens/NewMeal/styles"
 import { RefObject } from "react"
 import { TextInput } from "react-native"
-import { Text } from "./styles"
+import { FormContainer, Text, TwoColumnFormContainer } from "./styles"
 
 type Props = {
   name: string;

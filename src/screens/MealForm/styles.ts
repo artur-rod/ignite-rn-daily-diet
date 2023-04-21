@@ -18,12 +18,6 @@ export const FormContainer = styled.View`
   padding: 10px 12px 50px 12px;
 `;
 
-export const TwoColumnFormContainer = styled.View`
-  flex-direction: row;
-  gap: 12px;
-  margin: 0 6px;
-`;
-
 export const Text = styled.Text`
   ${({ theme }) => css`
     font-size: ${theme.FONT_SIZE.SM}px;

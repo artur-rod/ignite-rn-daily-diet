@@ -2,8 +2,8 @@ import styled, { css } from "styled-components/native";
 
 export const FormContainer = styled.View`
   align-items: center;
-  flex: 1;
   width: 100%;
+  padding: 40px 12px 50px 12px;
 `;
 
 export const TwoColumnFormContainer = styled.View`

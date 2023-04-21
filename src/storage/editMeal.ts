@@ -4,13 +4,15 @@ import { MealsDTO } from "./MealsDTO";
 import { getAllMeals } from "./getAllMeals";
 import { MEALS_COLLECTION } from "./storageConfig";
 
-export async function createNewMeal(meal: MealsDTO) {
+export async function editMeal(meal: MealsDTO) {
   try {
     const existentMeals = (await getAllMeals()) as MealsDTO[];
 
     const mealAlreadyExists =
       existentMeals?.length &&
-      existentMeals.find(({ date, time }) => date === meal.date && time === meal.time);
+      existentMeals.find(
+        ({ date, time, id }) => date === meal.date && time === meal.time && id !== meal.id
+      );
 
     if (mealAlreadyExists) {
       throw new AppError("Já existe uma refeição cadastrada com essa data e horário");
@@ -24,7 +26,9 @@ export async function createNewMeal(meal: MealsDTO) {
       throw new AppError("Não é possível cadastrar uma refeição com data e horário futuro");
     }
 
-    await AsyncStorage.setItem(MEALS_COLLECTION, JSON.stringify([...existentMeals, meal]));
+    const removeOldMeal = existentMeals.filter((existentMeal) => existentMeal.id !== meal.id);
+
+    await AsyncStorage.setItem(MEALS_COLLECTION, JSON.stringify([...removeOldMeal, meal]));
   } catch (err) {
     throw err;
   }

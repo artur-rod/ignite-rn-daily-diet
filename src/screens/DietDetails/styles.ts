@@ -14,6 +14,7 @@ export const StatisticsContainer = styled.View`
   align-items: center;
   flex: 1;
   padding: 24px;
+  margin-bottom: -50px;
 `;
 
 export const StatisticsTitle = styled.Text`

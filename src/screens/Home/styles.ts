@@ -6,7 +6,9 @@ export const Header = styled.View`
   flex-direction: row;
 `;
 
-export const Logo = styled.Image`height: 40px;`;
+export const Logo = styled.Image`
+  height: 40px;
+`;
 
 export const Profile = styled.View`
   height: 40px;
@@ -21,7 +23,7 @@ export const Text = styled.Text`
     font-size: ${theme.FONT_SIZE.MD}px;
     font-family: ${theme.FONT_FAMILY.REGULAR};
     color: ${theme.COLORS.GRAY_100};
-    `};
+  `};
   margin: 8px 0;
 `;
 
@@ -30,6 +32,7 @@ export const ListSectionTitle = styled.Text`
     font-size: ${theme.FONT_SIZE.LG}px;
     font-family: ${theme.FONT_FAMILY.BOLD};
     color: ${theme.COLORS.GRAY_100};
+    background-color: ${theme.COLORS.GRAY_600};
   `};
-  margin: 32px 0 8px 0;
+  padding: 32px 0 8px 0;
 `;

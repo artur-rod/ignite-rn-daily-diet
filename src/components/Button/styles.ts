@@ -23,9 +23,9 @@ export const Container = styled(TouchableOpacity)<Props>`
 
 export const Icon = styled(MaterialIcons).attrs<Props>(({ theme, type }) => ({
   size: 18,
-  color: type === "SECONDARY" ? theme.COLORS.GRAY_200 : theme.COLORS.WHITE
+  color: type === "SECONDARY" ? theme.COLORS.GRAY_200 : theme.COLORS.WHITE,
 }))`
-  margin-right: 4px;
+  margin-right: 8px;
 `;
 
 // prettier-ignore

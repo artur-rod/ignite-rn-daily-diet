@@ -5,13 +5,18 @@ export declare global {
   namespace ReactNavigation {
     interface RootParamList {
       Home: undefined;
-      NewMeal: undefined;
+      MealForm: {
+        MealInfo?: MealsDTO;
+      };
       DietDetails: {
         meals: MealsDTO[];
         percentage: number;
       };
       NewMealConfirmation: {
         type: TitleStyleProps;
+      };
+      MealDetails: {
+        MealInfo: MealsDTO;
       };
     }
   }
