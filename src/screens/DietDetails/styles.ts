@@ -9,7 +9,8 @@ export const Header = styled(View)`
 `;
 
 export const StatisticsContainer = styled.View`
-  border-radius: 20px 20px 0 0;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
   background-color: ${({ theme }) => theme.COLORS.GRAY_700};
   align-items: center;
   flex: 1;

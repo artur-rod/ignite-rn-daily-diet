@@ -4,7 +4,7 @@ import styled, { css } from "styled-components/native";
 export const Container = styled(TouchableOpacity)`
   flex-direction: row;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   width: 100%;
   height: 50px;
   border-radius: 6px;
@@ -40,6 +40,6 @@ export const Name = styled.Text`
 export const OnDietSign = styled(View)`
   height: 14px;
   width: 14px;
-  border-radius: 50%;
+  border-radius: 9999px;
   margin-right: 12px;
 `;

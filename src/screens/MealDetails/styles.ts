@@ -14,7 +14,8 @@ export const Background = styled(View)<OnDietStyleProps>`
 `;
 
 export const Container = styled.View`
-  border-radius: 20px 20px 0 0;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
   background-color: ${({ theme }) => theme.COLORS.WHITE};
   width: 100%;
   height: 100%;
@@ -56,7 +57,7 @@ export const Subtitle = styled.Text`
 
 export const OnDietContainer = styled.View`
   background-color: ${({ theme }) => theme.COLORS.GRAY_600};
-  border-radius: 50%;
+  border-radius: 9999px;
   width: 40%;
   padding: 10px 16px;
   align-items: center;
@@ -70,7 +71,7 @@ export const OnDietSign = styled(View)<OnDietStyleProps>`
   margin-right: 8px;
   width: 8px;
   height: 8px;
-  border-radius: 50%;
+  border-radius: 9999px;
 `;
 
 export const OnDietText = styled.Text`

@@ -14,7 +14,7 @@ export const Profile = styled.View`
   height: 40px;
   width: 40px;
   background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
-  border-radius: 50%;
+  border-radius: 9999px;
   border: 2px solid ${({ theme }) => theme.COLORS.GRAY_100};
 `;
 

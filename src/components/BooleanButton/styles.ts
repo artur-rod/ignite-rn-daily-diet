@@ -38,7 +38,7 @@ export const Container = styled(TouchableOpacity)<BooleanButtonProps>`
 export const TypeSign = styled(View)<BooleanButtonProps>`
   height: 8px;
   width: 8px;
-  border-radius: 50%;
+  border-radius: 9999px;
   background-color: ${({theme, type}) => type === "PRIMARY" ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK};
   margin-right: 8px
 `
